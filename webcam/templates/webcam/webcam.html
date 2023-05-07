@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Stream</title>
+</head>
+<body>
+    {% comment %} <script src="{%static 'webcam/webcam.js'%}"></script> {% endcomment %}
+    <script src="{% load static %}{% static 'webcam/webcam.js' %}"></script>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+    <br>
+    <video id="userVideo" autoplay></video>
+    <video id="receivedVideo" autoplay></video>
+
+
+    <script>
+        var startButton = document.getElementById('startButton');
+        var stopButton = document.getElementById('stopButton');
+        var userVideo = document.getElementById('userVideo');
+        var receivedVideo = document.getElementById('receivedVideo');
+        var socket;
+
+        startButton.addEventListener('click', function() {
+            // Request user permission to access webcam
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    // Display user's webcam stream
+                    userVideo.srcObject = stream;
+
+                    // Establish WebSocket connection
+                    socket = new WebSocket('ws://' + window.location.host + '/ws/webcam/');
+
+                    // Send video frames to backend
+                    var mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder.ondataavailable = function(event) {
+                        if (socket.readyState === WebSocket.OPEN) {
+                            socket.send(event.data);
+                        }
+                    };
+                    mediaRecorder.start(1000 / 30); // 30 FPS
+
+                    // Receive video frames from backend
+                    socket.onmessage = function(event) {
+                        receivedVideo.src = URL.createObjectURL(event.data);
+                    };
+                })
+                .catch(function(error) {
+                    console.log('Error accessing webcam: ', error);
+                });
+        });
+
+        stopButton.addEventListener('click', function() {
+            // Close WebSocket connection and stop webcam stream
+            if (socket && socket.readyState === WebSocket.OPEN) {
+                socket.close();
+            }
+            userVideo.srcObject.getTracks().forEach(function(track) {
+                track.stop();
+            });
+        });
+    </script>
+</body>
+</html>
