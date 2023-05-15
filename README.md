@@ -43,3 +43,30 @@ RealTimeConnect is a Django web application that allows users to start/stop thei
     Run the development server:
 
 8. Access the application in your web browser at http://127.0.0.1:8000/webcam/ .
+
+## Usage
+Click the "Start" button to grant access to your webcam.
+Your webcam video will be displayed in the first video element.
+The received video from the backend will be displayed in the second video element.
+Click the "Stop" button to stop the webcam stream.
+## Directory Structure
+The directory structure of the project is as follows:
+
+RealTimeConnect/          # Main project directory
+  ├── RealTimeConnect/     # Django project settings and configuration
+  ├── webcam/              # Django app directory
+  │   ├── templates/       # HTML template files
+  │   ├── static/          # Static files (JavaScript, CSS, images)
+  │   ├── consumers.py     # Django Channels WebSocket consumer
+  │   ├── routing.py       # WebSocket routing configuration
+  │   ├── views.py         # Django views for the webcam app
+  │   └── urls.py          # URL configuration for the webcam app
+  ├── README.md            # Project README file
+  └── requirements.txt     # Project dependencies
+Please note that the actual file and directory structure of your project may vary slightly based on your specific setup.
+
+## Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
+
+## License
+This project is licensed under the MIT License.
