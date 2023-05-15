@@ -53,28 +53,17 @@ Click the "Stop" button to stop the webcam stream.
 The directory structure of the project is as follows:
 
 RealTimeConnect/          # Main project directory
-
   ├── RealTimeConnect/     # Django project settings and configuration
-  
   ├── webcam/              # Django app directory
-  
   │   ├── templates/       # HTML template files
-  
   │   ├── static/          # Static files (JavaScript, CSS, images)
-  
   │   ├── consumers.py     # Django Channels WebSocket consumer
-  
   │   ├── routing.py       # WebSocket routing configuration
-  
-  │   ├── views.py         # Django views for the webcam app'
-  
+  │   ├── views.py         # Django views for the webcam app
   │   └── urls.py          # URL configuration for the webcam app
-  
   ├── README.md            # Project README file
-  
   └── requirements.txt     # Project dependencies
-  
-Please note that the actual file and directory structure of your project may vary slightly based on your specific setup.
+
 
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
