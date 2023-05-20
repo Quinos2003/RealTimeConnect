@@ -12,13 +12,11 @@ RealTimeConnect is a Django web application that allows users to start/stop thei
 - Simple integration with Django and JavaScript.
 
 ## Requirements
-
 - Python 3.x
 - Django
 - Django Channels
 
 ## Installation
-
 1. Clone the repository:
 
    ```shell
@@ -49,6 +47,7 @@ Click the "Start" button to grant access to your webcam.
 Your webcam video will be displayed in the first video element.
 The received video from the backend will be displayed in the second video element.
 Click the "Stop" button to stop the webcam stream.
+
 ## Directory Structure
 The directory structure of the project is as follows:
 
