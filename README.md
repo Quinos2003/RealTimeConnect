@@ -1,7 +1,6 @@
 # RealTimeConnect
-develop a real-time video streaming application using Django and Websockets that allows users to stream their webcam video to the backend. It will then be sent back to the front end and displayed on the same page
 
-RealTimeConnect is a Django web application that allows users to start/stop their webcam stream and view the received video from the backend in real-time.
+RealTimeConnect is a video streaming web application using Django and Websockets that allows users to start/stop their webcam stream and view the received video from the backend in real-time.
 
 ## Features
 
